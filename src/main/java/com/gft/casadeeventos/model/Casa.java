@@ -1,5 +1,7 @@
 package com.gft.casadeeventos.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,13 @@ public class Casa {
 	private Long id;
 	
 	private String nome;
+	
 	private String end;
+	
+	private String dono;
+	
+	private BigDecimal preco;	
+	
 	private int capa;
 
 	public String getNome() {
@@ -41,6 +49,18 @@ public class Casa {
 		this.id = id;
 	}
 
+	public String getDono() {
+		return dono;
+	}
+	public void setDono(String dono) {
+		this.dono = dono;
+	}
+	public BigDecimal getPreco() {
+		return preco;
+	}
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

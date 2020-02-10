@@ -26,13 +26,13 @@ public class controllerCasas {
 	public ModelAndView pesquisacasa() {
 		List<Casa> casas =  cas.findAll();
 		ModelAndView mv = new ModelAndView("Casas");
-		mv.addObject("CadastroCasa", casas);
+		mv.addObject("CadastroCasas", casas);
 		return mv;
 	}
 	
 	@RequestMapping(value = "/novo",method = RequestMethod.POST)
 	public ModelAndView salvar(@Validated Casa casaa, Errors errors) {	
-		ModelAndView mv = new ModelAndView("CadastroCasa");
+		ModelAndView mv = new ModelAndView("CadastroCasas");
 
 		
 		if(errors.hasErrors()) {
@@ -50,7 +50,7 @@ public class controllerCasas {
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroCasa");
+		ModelAndView mv = new ModelAndView("CadastroCasas");
 		mv.addObject(new Casa());
 		return mv;
 	}

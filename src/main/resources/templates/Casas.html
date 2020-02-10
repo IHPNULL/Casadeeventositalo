@@ -39,25 +39,25 @@ layout:decorator="Layout">
 							<tr>
 								<th class="text-center col-md-1">ID</th>
 								<th class="text-center col-md-3">Nome</th>
-								<th class="text-center col-md-3">Banda</th>
-								<th class="text-center col-md-1">Local</th>
-								<th>Organizador</th>
-								<th>Valor</th>
-								<th class="text-center col-md-1">Data do Evento</th>
+								<th class="text-center col-md-3">Endereço</th>
+								<th class="text-center col-md-1">Dono</th>
+								<th>Valor por noite</th>
+								<th>Capacidade</th>
+								<th class="text-center col-md-1">Data de Cadastro</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each=" evento : ${CadastroEvento}">
+							<tr th:each=" evento : ${CadastroCasa}">
 								<td class="text-center" th:text="${evento.Id}">1</td>
 								<td class="text-center" th:text="${evento.Nome}"></td>
-								<td th:text="${evento.talento}"></td>
-								<td th:text="${evento.Local}"></td>
-								<td th:text="${evento.organizador}"></td>
+								<td th:text="${evento.end}"></td>
+								<td th:text="${evento.dono}"></td>
 								<td th:text="${evento.preco}"></td>
+								<td th:text="${evento.capa}"></td>
 								<td class="text-center" th:text="${#dates.format(evento.data, 'dd-MMM-yyyy')}"></td>
 							</tr>
 							<tr>
-								<td th:if="${#lists.isEmpty(CadastroEvento)}"colspan="7">Nenhum usuario encontrado</td>
+								<td th:if="${#lists.isEmpty(CadastroCasa)}"colspan="7">Nenhum usuario encontrado</td>
 							</tr>
 						</tbody>
 					</table>

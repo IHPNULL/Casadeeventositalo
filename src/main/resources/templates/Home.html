@@ -15,17 +15,24 @@ layout:decorator="Layout">
 
 	<header>
 			<img class="logo"src="/img/logo.png" width="93px" height="106.66px">
-				<nav class="navbar navbar-defaut navbar-static-top">
-					<div class="container-fluid">
-						<div class="navbar-header"></div>
-					</div>
+			<nav class="navbar navbar-defaut navbar-static-top">
+				<div class="container-fluid">
+					<div class="navbar-header"></div>
+				</div>
+					
+				<ul class="nav nav-tabs">
+					<li role="presentation"><a href="/home">Home</a></li>
+					<li role="presentation"><a href="/casadeshow">Casas de Show</a></li>
+					<li role="presentation"><a href="/eventos">Eventos</a></li>
+					<li role="presentation"><a href="/historico">Histórico</a></li>					
+				</ul>
 				
-			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="/home">Home</a></li>
-				<li role="presentation"><a href="/casadeshow">Casas de Show</a></li>
-				<li role="presentation"><a href="/eventos">Eventos</a></li>
-				<li role="presentation"><a href="/historico">Histórico</a></li>
-			</ul>
+						<div class = "form-group">
+							<div class="col-sm-offset-3 col-sn-10">
+								<button type = "button"  style="position:absolute;left:63%;top:18%;" onclick="window.location.href='/casadeshow/novo'" class="btn btn-primary">CADASTRAR</button>
+								<button type = "button"  style="position:absolute;left:70%;top:18%;" onclick="window.location.href='/login'" class="btn btn-primary">LOGIN</button>
+							</div>
+						</div>
 			</nav>
 	</header>
 		
