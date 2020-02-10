@@ -31,60 +31,43 @@ layout:decorator="Layout">
 
 
 
-	<form action="/eventos/novo" method="POST" th:object="${evento}">
+	<form action="/Usuarios/novo" method="POST" th:object="${usuario}">
 
 			<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
-				<span>Evento marcado com sucesso!</span>			
+				<span>Usuario cadastrado com sucesso!</span>			
 			</div>
 
 		<div class = "form-horizontal">
 						<div class="panel-heading">
-							<h3>CADASTRO DE EVENTO</h3>
+							<h3>CADASTRO DE USUARIO</h3>
 						</div>
 					<div class="panel-body">
 					
 						<div class="form-group">							
-							<label for="Nome" class="col-sm-5 control-label">NOME DO EVENTO</label>
+							<label for="Nome" class="col-sm-5 control-label">NOME</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" name="Nome" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="descr" class="col-sm-5 control-label">DESCRIÇAO</label>
+							<label for="email" class="col-sm-5 control-label">E-MAIL</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control"  name="descr" />
+								<input type="text" class="form-control"  name="email" />
 							</div>
 						</div>
 							<div class="form-group">
-							<label for="talento" class="col-sm-5 control-label">ATRAÇAO</label>
+							<label for="senha" class="col-sm-5 control-label">SENHA</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control"  name="talento" />
+								<input type="text" class="form-control"  name="senha"/>
 							</div>
 						</div>
 							<div class="form-group">
-							<label for="preco" class="col-sm-5 control-label">VALOR</label>
-							<div class="col-sm-8">
-								<input type="number" placeholder="0 ou vazios serao considerados gratuitos" class="form-control"  name="preco" />
+							<label for="confsenha" class="col-sm-5 control-label">CONFIRME A SENHA</label>
+							<div class="col-sm-8">	
+								<input type="number" placeholder="0 ou vazios serao considerados gratuitos" class="form-control"  name="confsenha" />
 							</div>
 						</div>
-						<div class="form-group">
-						<label for= "local" class="col-sm-5 control-label">LOCAL</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control"  name="local"/>
-							</div>
-						</div>	
-						<div class="form-group">
-						<label for="ingressos" class="col-sm-5 control-label">NUMERO DE INGRESSOS</label>
-							<div class="col-sm-8">
-								<input type="number" class="form-control"  name="ingressos"/>
-							</div>
-						</div>
-						<div class="form-group">
-						<label for="text" class="col-sm-5 control-label">DATA</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control"  name="data"/>
-							</div>
-						</div>
+												
 						<div class = "form-group">
 							<div class="col-sm-offset-3 col-sn-10">
 								<button type = "submit" class="btn btn-primary">CADASTRAR</button>

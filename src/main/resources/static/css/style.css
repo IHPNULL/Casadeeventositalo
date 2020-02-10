@@ -20,6 +20,25 @@ body{
 	color: white;	
 }
 
+.panel-heading {
+	font-style:oblique;
+	padding-left: 10%;
+	
+}
+
+.control-label {
+	margin-left:-15%;
+}
+
+.form-horizontal:not(.btn) {
+	background-color:white;
+	margin-left: 30%;
+	margin-right: 30%;
+	border-style:solid;
+	border-radius:15px;
+}
+
+
 .card-arctic{
 	background-color : white;
 	margin-left: 5%;
@@ -54,11 +73,9 @@ body{
 }
 
 
-/*-------Casa de Show-------*/
+/*-------Casa de Eventos-------*/
 
-.panel-title{
-	padding-bottom: 2%;	
-}
+
 
 .panel-casa{
 	margin-left: 10%;

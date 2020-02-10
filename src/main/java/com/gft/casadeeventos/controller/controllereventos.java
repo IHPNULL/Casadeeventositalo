@@ -1,5 +1,7 @@
 package com.gft.casadeeventos.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -20,21 +22,23 @@ public class controllereventos {
 	private eventos event;
 	
 	@RequestMapping
-	public ModelAndView Eventos(){
+	public ModelAndView pesquisaevento() {
+		List<Evento> eventos =  event.findAll();
 		ModelAndView mv = new ModelAndView("Eventos");
-		
-		
+		mv.addObject("CadastroEvento", eventos);
 		return mv;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/novo",method = RequestMethod.POST)
 	public ModelAndView salvar(@Validated Evento evento, Errors errors) {	
 		ModelAndView mv = new ModelAndView("CadastroEvento");
+
 		
 		if(errors.hasErrors()) {
 			return mv;
 			
 		}
+		
 		mv.addObject(new Evento());
 		
 		event.save(evento);
@@ -46,7 +50,7 @@ public class controllereventos {
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("CadastroEvento");
-		
+		mv.addObject(new Evento());
 		return mv;
 	}
 }
