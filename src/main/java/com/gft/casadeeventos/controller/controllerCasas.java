@@ -1,7 +1,7 @@
 package com.gft.casadeeventos.controller;
 
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -26,33 +26,22 @@ public class controllerCasas {
 	public ModelAndView pesquisacasa() {
 		List<Casa> casas =  cas.findAll();
 		ModelAndView mv = new ModelAndView("Casas");
-		mv.addObject("CadastroCasas", casas);
+		mv.addObject("casas", casas);
 		return mv;
 	}
 	
-	@RequestMapping(value = "/novo",method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Casa casaa, Errors errors) {	
-		ModelAndView mv = new ModelAndView("CadastroCasas");
-
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(@Validated Casa casaa, Errors errors) {	
+		ModelAndView mv = new ModelAndView("Casas");
 		
 		if(errors.hasErrors()) {
-			return mv;
+			return "Casas";
 			
 		}
-		
-		mv.addObject(new Casa());
 		
 		cas.save(casaa);
 		
 		mv.addObject("mensagem", "cadastrado com sucesso");
-		return mv;
+		return "redirect:/casadeshow";
 	}
-	
-	@RequestMapping("/novo")
-	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroCasas");
-		mv.addObject(new Casa());
-		return mv;
-	}
-	
 }

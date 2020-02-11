@@ -6,23 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@SuppressWarnings("deprecation")
 public class Casa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message="Insira o nome do Local")
+	@NotNull
 	private String nome;
 	
+	@NotEmpty(message="Insira o Endereço do Local")
+	@NotNull
 	private String end;
 	
 	private String dono;
 	
+	@NotNull(message="insira o limite de ingressos")
 	private BigDecimal preco;	
 	
-	private int capa;
+	@NotNull(message="insira o limite de ingressos")
+	private Integer capa;
 
 	public String getNome() {
 		return nome;
@@ -36,10 +46,10 @@ public class Casa {
 	public void setEnd(String end) {
 		this.end = end;
 	}
-	public int getCapa() {
+	public Integer getCapa() {
 		return capa;
 	}
-	public void setCapa(int capa) {
+	public void setCapa(Integer capa) {
 		this.capa = capa;
 	}
 	public Long getId() {

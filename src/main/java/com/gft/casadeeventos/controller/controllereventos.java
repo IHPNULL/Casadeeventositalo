@@ -25,32 +25,22 @@ public class controllereventos {
 	public ModelAndView pesquisaevento() {
 		List<Evento> eventos =  event.findAll();
 		ModelAndView mv = new ModelAndView("Eventos");
-		mv.addObject("CadastroEvento", eventos);
+		mv.addObject(new Evento());
+		mv.addObject("eventos", eventos);
 		return mv;
 	}
 	
-	@RequestMapping(value = "/novo",method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Evento evento, Errors errors) {	
-		ModelAndView mv = new ModelAndView("CadastroEvento");
-
-		
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(@Validated Evento evento, Errors errors) {
+		ModelAndView mv = new ModelAndView("Eventos");
 		if(errors.hasErrors()) {
-			return mv;
+			return "/eventos";
 			
 		}
-		
-		mv.addObject(new Evento());
 		
 		event.save(evento);
 		
 		mv.addObject("mensagem", "cadastrado com sucesso");
-		return mv;
-	}
-	
-	@RequestMapping("/novo")
-	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroEvento");
-		mv.addObject(new Evento());
-		return mv;
+		return "redirect:/eventos";
 	}
 }
