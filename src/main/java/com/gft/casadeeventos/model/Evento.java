@@ -40,7 +40,7 @@ public class Evento {
 	private BigDecimal preco;
 
 	@NotNull(message="insira o limite de ingressos")
-	private Integer ingressos;
+	private int ingressos;
 	
 	@NotNull(message="Insira a data no formato: dia/mes/ano")
 	@DateTimeFormat(pattern = "dd/MM/yyy")

@@ -44,12 +44,21 @@ public class controllereventos {
 		return "redirect:/eventos";
 	}
 	
-	@RequestMapping("{id}")
-	public ModelAndView edicao(@PathVariable Long id)
+	@RequestMapping("/editar/{id}")
+	public ModelAndView edicao(@PathVariable("id") Evento eve)
 	{
-		Evento eve = event.findOne(id);
-		ModelAndView mv = new ModelAndView("Redirect: Eventos");
+		ModelAndView mv = new ModelAndView("Eventos");
 		mv.addObject(eve);
 		return mv;
 	}
+	
+	@RequestMapping(value="{id}",method = RequestMethod.GET)
+	public String exclusao(@PathVariable Long id)
+	{
+		event.deleteById(id);
+		return "redirect:/eventos";
+	}
+	
+	
+	
 }
