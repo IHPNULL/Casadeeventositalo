@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,12 +36,20 @@ public class controllereventos {
 		ModelAndView mv = new ModelAndView("Eventos");
 		if(errors.hasErrors()) {
 			return "/eventos";
-			
 		}
 		
 		event.save(evento);
 		
 		mv.addObject("mensagem", "cadastrado com sucesso");
 		return "redirect:/eventos";
+	}
+	
+	@RequestMapping("{id}")
+	public ModelAndView edicao(@PathVariable Long id)
+	{
+		Evento eve = event.findOne(id);
+		ModelAndView mv = new ModelAndView("Redirect: Eventos");
+		mv.addObject(eve);
+		return mv;
 	}
 }

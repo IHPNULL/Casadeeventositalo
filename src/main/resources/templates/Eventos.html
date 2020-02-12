@@ -119,8 +119,14 @@ layout:decorator="Layout">
 								<td th:text="${evento.talento}"></td>
 								<td th:text="${evento.Local}"></td>
 								<td th:text="${evento.organizador}"></td>
-								<td th:text="${evento.preco}"></td>
+								<td th:text="|R$: ${evento.preco}|"></td>
 								<td class="text-center" th:text="${#dates.format(evento.data, 'dd-MMM-yyyy')}"></td>
+							<td class="text-center">
+								<a class="btn-link btn-xs" th:href="/eventos/{id}(id=${evento.id})">
+									<span class="glyphicon glyphicon-pencil"></span>
+									
+								</a>
+							
 							</tr>
 							<tr>
 								<td th:if="${#lists.isEmpty(eventos)}"colspan="7">Nenhum usuario encontrado</td>

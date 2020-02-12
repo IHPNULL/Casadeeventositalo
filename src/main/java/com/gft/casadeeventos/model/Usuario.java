@@ -8,10 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@SuppressWarnings("deprecation")
 public class Usuario {
 	
 	@Id
@@ -20,11 +24,19 @@ public class Usuario {
 	
 	//List<Ingresso> ingressos =  new ArrayList<Ingresso>();
 	
-	private String nome;
+	@NotEmpty(message="Insira o nome")
+	@Size(max = 20, message = "Seu nome não pode ter mais de 100 caracteres.")
+	private String nome;	
 	
+	@NotEmpty(message="Insira o email")
 	private String email;
 	
+	@NotEmpty(message="Senha vazia")
 	private String senha;
+	
+	@NotNull(message="Senhas estao diferentes")
+	@NotEmpty(message="Confirme sua senha")
+	private String confsenha;
 
 	private boolean adm;
 	
@@ -69,7 +81,14 @@ public class Usuario {
 		this.data = data;
 	}
 	
+	public void setConfsenha(String confsenha) {
+		this.confsenha = confsenha;
+	}
 	
+	public String getConfsenha() {			
+			return confsenha;	
+	}
+
 	/*
 	public List<Ingresso> getIng() {
 		return ingressos;
@@ -78,6 +97,7 @@ public class Usuario {
 		this.ingressos = ing;
 	}
 	*/
+	
 	
 	
 	@Override
