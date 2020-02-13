@@ -3,29 +3,31 @@ package com.gft.casadeeventos.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import java.lang.Integer;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@SuppressWarnings("deprecation") 
 @Entity
+@SequenceGenerator(name="evento_seq",sequenceName="")
 public class Evento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
-	@NotEmpty(message="Insira o nome do Evento")
-	@NotNull
-	private String Nome;
+	@NotNull(message="Insira o nome do Evento")
+	private String Nomeevento;
+	
+	
 	
 	private String descr;
 	
@@ -33,10 +35,10 @@ public class Evento {
 	
 	private String organizador;
 	
-
-	@NotEmpty(message="insira o local")
-	private String local;
-	
+	@ManyToOne
+	@JoinColumn
+	private Casa local;
+		
 	private BigDecimal preco;
 
 	@NotNull(message="insira o limite de ingressos")
@@ -47,6 +49,28 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getNomeevento() {
+		return Nomeevento;
+	}
+	
+	public void setNomeevento(String nomeevento) {
+		Nomeevento = nomeevento;
+	}
+	
 	public Long getId() {
 		return Id;
 	}
@@ -56,11 +80,11 @@ public class Evento {
 	}
 
 	public String getNome() {
-		return Nome;
+		return Nomeevento;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		Nomeevento = nome;
 	}
 
 	public String getDescr() {
@@ -87,11 +111,11 @@ public class Evento {
 		this.organizador = organizador;
 	}
 
-	public String getLocal() {
+	public Casa getLocal() {
 		return local;
 	}
 
-	public void setLocal(String local) {
+	public void setLocal(@NotNull(message = "insira o local") Casa local) {
 		this.local = local;
 	}
 

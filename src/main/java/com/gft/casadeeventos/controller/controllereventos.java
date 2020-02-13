@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gft.casadeeventos.model.Casa;
 import com.gft.casadeeventos.model.Evento;
+import com.gft.casadeeventos.repository.casas;
 import com.gft.casadeeventos.repository.eventos;
 
 
@@ -22,14 +24,20 @@ public class controllereventos {
 	@Autowired
 	private eventos event;
 	
+	@Autowired
+	private casas cas;
+	
 	@RequestMapping
 	public ModelAndView pesquisaevento() {
 		List<Evento> eventos =  event.findAll();
 		ModelAndView mv = new ModelAndView("Eventos");
 		mv.addObject(new Evento());
 		mv.addObject("eventos", eventos);
+		List<Casa> casas =  cas.findAll();
+		mv.addObject("casas", casas);
 		return mv;
 	}
+	
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Evento evento, Errors errors) {

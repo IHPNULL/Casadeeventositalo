@@ -26,6 +26,7 @@ public class controllerCasas {
 	public ModelAndView pesquisacasa() {
 		List<Casa> casas =  cas.findAll();
 		ModelAndView mv = new ModelAndView("Casas");
+		mv.addObject(new Casa());
 		mv.addObject("casas", casas);
 		return mv;
 	}
