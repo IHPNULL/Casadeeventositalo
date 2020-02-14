@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.persistence.TemporalType;
 
@@ -25,6 +26,7 @@ public class Evento {
 	private Long Id;
 	
 	@NotNull(message="Insira o nome do Evento")
+	@NotEmpty(message="Insira o nome do Evento")
 	private String Nomeevento;
 	
 	
@@ -38,7 +40,7 @@ public class Evento {
 	@ManyToOne
 	@JoinColumn
 	private Casa local;
-		
+	
 	private BigDecimal preco;
 
 	@NotNull(message="insira o limite de ingressos")
@@ -48,17 +50,6 @@ public class Evento {
 	@DateTimeFormat(pattern = "dd/MM/yyy")
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

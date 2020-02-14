@@ -47,37 +47,38 @@ layout:decorator="Layout">
 							<h3>CADASTRO DE CASA</h3>
 						</div>
 					<div class="panel-body">
-						<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">							
+					
+						<div class="form-group">							
 							<label for="Nome" class="col-sm-5 control-label">NOME DA CASA</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" th:field="*{nome}" />
+								<input type="text" class="form-control" th:field="*{Nome}"/>
 							</div>
 						</div>
 						<div class="form-group"  th:classappend="${#fields.hasErrors('descr')} ? has-error">
 				        	<div class="input-group-prepend">
-								<label for="Nome" class="descbar col-sm-5 control-label">DESCRIÇAO</label>
+								<label for="Nome" class="col-sm-5 control-label">DESCRIÇAO</label>
 							</div>
-						  <textarea class="form-group descricao" th:field="*{descr}"  placeholder="Diga o tamanho do espaço, a quantidade de banheiros, o tipo de publico da casa, e qualquer informaçao que ache interessante para quem queira alugar a casa." aria-label="textarea" ></textarea>	
+						  <textarea class="form-group" th:field="*{descr}" aria-label="textarea" style="margin-left:2%;max-width:480px;max-height:300px;width:480px;min-width:480px;min-height:100px;"></textarea>	
 						</div>
-						<div class="form-group" th:classappend="${#fields.hasErrors('preco')} ? has-error">
+						<div class="form-group">
 							<label for="preco" class="col-sm-5 control-label">VALOR POR NOITE</label>
 							<div class="col-sm-8">
-								<input type="number" placeholder="0 ou vazios serao considerados gratuitos" class="form-control"  th:field="*{preco}" />
+								<input type="number" placeholder="0 ou vazios serao considerados gratuitos" class="form-control"  th:field="*{preco}"/>
 							</div>
 						</div>
-						<div class="form-group" th:classappend="${#fields.hasErrors('end')} ? has-error">
+						<div class="form-group">
 						<label for= "local" class="col-sm-5 control-label">ENDEREÇO</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control"  th:field="*{end}"/>
 							</div>
 						</div>	
-						<div class="form-group" th:classappend="${#fields.hasErrors('capa')} ? has-error">
+						<div class="form-group">
 						<label for="ingressos" class="col-sm-5 control-label">CAPACIDADE</label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control"  name="capa"/>
+								<input type="number" class="form-control"  th:field="*{capa}"/>
 							</div>
 						</div>
-						<div class = "form-group" >
+						<div class = "form-group">
 							<div class="col-sm-offset-3 col-sn-10">
 								<button type = "submit" style="margin-left:70%;" class="btn btn-primary">CADASTRAR</button>
 							</div>
@@ -105,16 +106,6 @@ layout:decorator="Layout">
 								<td th:text="${casa.dono}"></td>
 								<td th:text="${casa.preco}"></td>
 								<td th:text="${casa.capa}"></td>
-								<td class="text-center">
-									<a class="btn-link btn-xs" th:href="@{/casadeshow/editar/{id}(id=${casa.id})}">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-								<td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/{id}(id=${casa.id})}">
-							  			<i class="fas fa-trash-alt"></i>
-									</a>
-								</td>	
 							</tr>
 							<tr>
 								<td th:if="${#lists.isEmpty(casas)}"colspan="7">Nenhum usuario encontrado</td>

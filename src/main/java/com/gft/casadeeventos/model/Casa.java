@@ -24,6 +24,8 @@ public class Casa {
 	@NotNull
 	private String nome;
 	
+	private String descr;
+	
 	@OneToMany
 	private List<Evento> events;
 	
@@ -51,6 +53,12 @@ public class Casa {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getDescr() {
+		return descr;
+	}
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 	public String getEnd() {
 		return end;

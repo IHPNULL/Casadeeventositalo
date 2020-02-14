@@ -38,7 +38,6 @@ public class controllereventos {
 		return mv;
 	}
 	
-	
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Evento evento, Errors errors) {
 		ModelAndView mv = new ModelAndView("Eventos");
@@ -55,18 +54,16 @@ public class controllereventos {
 	@RequestMapping("/editar/{id}")
 	public ModelAndView edicao(@PathVariable("id") Evento eve)
 	{
-		ModelAndView mv = new ModelAndView("Eventos");
+		ModelAndView mv = new ModelAndView("Eventosedit");
+		List<Casa> casas =  cas.findAll();
+		mv.addObject("casas", casas);
 		mv.addObject(eve);
 		return mv;
 	}
 	
-	@RequestMapping(value="{id}",method = RequestMethod.GET)
-	public String exclusao(@PathVariable Long id)
-	{
+	@RequestMapping(value ="{id}", method = RequestMethod.GET)
+	public String excluir(@PathVariable Long id){
 		event.deleteById(id);
 		return "redirect:/eventos";
-	}
-	
-	
-	
+	}	
 }
