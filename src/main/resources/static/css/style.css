@@ -21,7 +21,9 @@ body{
 	font-size:20px;
 }
 
-
+.lab {
+	float: left;
+}
 
 .panel-heading {
 	font-style:oblique;

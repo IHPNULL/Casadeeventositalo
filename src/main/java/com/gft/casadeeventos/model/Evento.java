@@ -51,8 +51,7 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
-	
-	
+	private boolean grat = true;
 	
 	public String getNomeevento() {
 		return Nomeevento;
@@ -133,6 +132,14 @@ public class Evento {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public boolean isGrat() {
+		return grat;
+	}
+
+	public void setGrat(boolean grat) {
+		this.grat = grat;
 	}
 
 	@Override

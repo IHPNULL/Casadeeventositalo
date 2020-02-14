@@ -1,5 +1,6 @@
 package com.gft.casadeeventos.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,17 @@ public class controllereventos {
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Evento evento, Errors errors) {
 		ModelAndView mv = new ModelAndView("Eventos");
+		
 		if(errors.hasErrors()) {
 			return "/eventos";
 		}
 		
 		event.save(evento);
+	
+		if(evento.getPreco() == null || (evento.getPreco().compareTo(BigDecimal.ZERO) == 0) )
+		{
+			evento.setGrat(false);			
+		}
 		
 		mv.addObject("mensagem", "cadastrado com sucesso");
 		return "redirect:/eventos";
