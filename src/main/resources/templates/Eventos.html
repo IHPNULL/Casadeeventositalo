@@ -126,10 +126,10 @@ layout:decorator="Layout">
 					<td class="text-center" th:text="${evento.Id}">1</td>
 					<td class="text-center" th:text="${evento.Nomeevento}"></td>
 					<td th:text="${evento.talento}"></td>
-					<td th:text="${evento.Local.nome}"></td>
+					<td th:text="${evento.local.nome}"></td>
 					<td th:text="${evento.organizador}"></td>
-						<td th:if="${evento.grat}">Gratuito</td>
-						<td th:unless="${evento.grat}" th:text="${evento.preco}"></td>
+						<td th:if="${evento.grat}"  th:text="${evento.preco}"></td>
+						<td th:unless="${evento.grat}">Gratuito</td>
 					<td class="text-center" th:text="${#dates.format(evento.data, 'dd-MMM-yyyy')}"></td>
 					<td class="text-center">
 						<a class="btn-link btn-xs" th:href="@{/eventos/editar/{id}(id=${evento.Id})}">

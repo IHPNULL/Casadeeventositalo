@@ -40,18 +40,19 @@ layout:decorator="Layout">
 						<div class="panel heading">
 							<div class="clearfix">
 								<h3 style="padding-top: 1%; padding-bottom: 1%;"
-									class="panel-title panel-evento" align="center">REHENA -
-									Home</h3>
+									class="panel-title panel-evento" align="center">REHENA - Home</h3>
 							</div>
 						</div>
 							<div class="card" th:each="evento : ${eventos}">
 								<div class="card-body" >
 									<h2 class="card-title" align="center" th:text="${evento.Nomeevento}"></h2>
 									<h4 class="text-center" th:text="${evento.talento}"></h4>
-											<h5 class="text-center" th:text="|Data do evento : ${{evento.data}}|"></h5>
-											<h5 class="text-center" th:text="${evento.local.Nomeevento}"></h5>
-											<h4 class="text-center" th:text="|Preço do ingresso: R$ ${{evento.preco}}|"></h4>
-			
+											<h4 class="text-center" th:text="|Data do evento : ${{evento.data}}|"></h4>
+											<h4 class="text-center" th:text="|Ingressos disponiveis: ${evento.ingressosd}|"></h4>
+											<h4 class="text-center" th:text="${evento.local.nome}"></h4>
+											<h4 class="text-center" th:if="${evento.grat}"  th:text="|R$: ${evento.preco}|"></h4>
+											<h4 class="text-center" th:unless="${evento.grat}">Gratuito</h4>
+											<h4 class="text-center"><a class="btn btn-primary" th:href="@{/compra/{id}(id=${evento.Id})}">COMPRAR</a></h4>	
 								</div>				
 							</div>
 						</div>

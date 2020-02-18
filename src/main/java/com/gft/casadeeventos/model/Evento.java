@@ -29,8 +29,6 @@ public class Evento {
 	@NotEmpty(message="Insira o nome do Evento")
 	private String Nomeevento;
 	
-	
-	
 	private String descr;
 	
 	private String talento;
@@ -45,6 +43,8 @@ public class Evento {
 
 	@NotNull(message="insira o limite de ingressos")
 	private int ingressos;
+	
+	private int ingressosd;
 	
 	@NotNull(message="Insira a data no formato: dia/mes/ano")
 	@DateTimeFormat(pattern = "dd/MM/yyy")
@@ -124,6 +124,14 @@ public class Evento {
 
 	public void setIngressos(int ingressos) {
 		this.ingressos = ingressos;
+	}
+
+	public int getIngressosd() {
+		return ingressosd;
+	}
+
+	public void setIngressosd(int ingressosd) {
+		this.ingressosd = ingressosd;
 	}
 
 	public Date getData() {

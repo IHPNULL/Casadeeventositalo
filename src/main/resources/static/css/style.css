@@ -153,10 +153,16 @@ body{
 	padding-left:20%;
 }
 
+.card {
+	margin:5px;
+	border-style:solid;
+	border: solid black;
+	border-radius:15px;	
+}
 
-
-
-
+.btn-primary {
+	
+}
 
 
 

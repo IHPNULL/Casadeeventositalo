@@ -47,12 +47,16 @@ public class controllereventos {
 			return "/eventos";
 		}
 		
-		event.save(evento);
-	
 		if(evento.getPreco() == null || (evento.getPreco().compareTo(BigDecimal.ZERO) == 0) )
 		{
+			System.out.println(evento.getPreco());
 			evento.setGrat(false);			
 		}
+		
+		evento.setIngressosd(evento.getIngressos());
+
+		event.save(evento);
+	
 		
 		mv.addObject("mensagem", "cadastrado com sucesso");
 		return "redirect:/eventos";

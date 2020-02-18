@@ -40,13 +40,6 @@ public class Casa {
 	
 	@NotNull(message="insira o limite de ingressos")
 	private int capa;
-
-	
-	
-	
-	
-	
-	
 	
 	public String getNome() {
 		return nome;
