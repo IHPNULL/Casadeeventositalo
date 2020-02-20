@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -40,11 +41,16 @@ public class controllereventos {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated Evento evento, Errors errors) {
+	public ModelAndView salvar(@Validated Evento evento, Errors errors) {
 		ModelAndView mv = new ModelAndView("Eventos");
 		
 		if(errors.hasErrors()) {
-			return "/eventos";
+			List<Evento> todoseventos = event.findAll();
+			mv.addObject("eventos", todoseventos);
+			List<Casa> todascasas = cas.findAll();
+			mv.addObject("casas", todascasas);
+			
+			return mv;
 		}
 		
 		if(evento.getPreco() == null || (evento.getPreco().compareTo(BigDecimal.ZERO) == 0) )
@@ -53,13 +59,16 @@ public class controllereventos {
 			evento.setGrat(false);			
 		}
 		
-		evento.setIngressosd(evento.getIngressos());
-
-		event.save(evento);
-	
 		
-		mv.addObject("mensagem", "cadastrado com sucesso");
-		return "redirect:/eventos";
+			event.save(evento);
+			List <Evento> todosEventos = event.findAll();
+			mv.addObject(new Evento());
+			mv.addObject("eventos", todosEventos);
+			List <Casa> todasCasas = cas.findAll();
+			mv.addObject("casas", todasCasas);
+			mv.addObject("mensagem", "Evento salvo com sucesso!!");
+			return mv;		
+			
 	}
 	
 	@RequestMapping("/editar/{id}")

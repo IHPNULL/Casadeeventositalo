@@ -30,9 +30,11 @@ public class Evento {
 	private String Nomeevento;
 	
 	private String descr;
-	
+
 	private String talento;
 	
+	@NotNull(message="Insira o organizador do Evento")
+	@NotEmpty(message="Insira o organizador do Evento")
 	private String organizador;
 	
 	@ManyToOne
@@ -42,7 +44,7 @@ public class Evento {
 	private BigDecimal preco;
 
 	@NotNull(message="insira o limite de ingressos")
-	private int ingressos;
+	private Integer ingressos;
 	
 	private int ingressosd;
 	
@@ -118,11 +120,11 @@ public class Evento {
 	}
 
 	
-	public int getIngressos() {
+	public Integer getIngressos() {
 		return ingressos;
 	}
 
-	public void setIngressos(int ingressos) {
+	public void setIngressos(Integer ingressos) {
 		this.ingressos = ingressos;
 	}
 
@@ -149,6 +151,7 @@ public class Evento {
 	public void setGrat(boolean grat) {
 		this.grat = grat;
 	}
+	
 
 	@Override
 	public int hashCode() {

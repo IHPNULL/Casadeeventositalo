@@ -3,6 +3,7 @@ package com.gft.casadeeventos.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Casa {
 	
 	private String descr;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="local")
 	private List<Evento> events;
 	
 	@NotEmpty(message="Insira o Endereço do Local")
@@ -35,11 +36,11 @@ public class Casa {
 	
 	private String dono;
 	
-	@NotNull(message="insira o limite de ingressos")
+	@NotNull(message="insira o valor da noite")
 	private BigDecimal preco;	
 	
 	@NotNull(message="insira o limite de ingressos")
-	private int capa;
+	private Integer capa;
 	
 	public String getNome() {
 		return nome;
@@ -59,10 +60,10 @@ public class Casa {
 	public void setEnd(String end) {
 		this.end = end;
 	}
-	public int getCapa() {
+	public Integer getCapa() {
 		return capa;
 	}
-	public void setCapa(int capa) {
+	public void setCapa(Integer capa) {
 		this.capa = capa;
 	}
 	public Long getId() {
