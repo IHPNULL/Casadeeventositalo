@@ -82,7 +82,7 @@ layout:decorator="Layout">
 					<div class="col-sm-8" style="margin-left:-4%;">	
 						<div class="input-group">
 						  <span class="input-group-addon">$</span>
-						  <input type="number" class="form-control" placeholder="Valor em 0 sera considerado gratuito" name="preco" aria-label="Amount (to the nearest dollar)">
+						  <input type="number" class="form-control" placeholder="Valor em 0 sera considerado gratuito" th:field="*{preco}" aria-label="Amount (to the nearest dollar)">
 						  <span class="input-group-addon">.00</span>
 						</div>
 					</div>

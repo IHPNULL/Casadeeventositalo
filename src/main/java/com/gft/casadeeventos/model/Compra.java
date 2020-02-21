@@ -2,20 +2,36 @@ package com.gft.casadeeventos.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
+
+@Entity
 public class Compra {
 	
-	private Evento eveeen;
+	public Compra(Long iDevento, String evento, double total, Date datacompra, int qtd) {
+		super();
+		IDevento = iDevento;
+		this.evento = evento;
+		this.qtd = qtd;
+		this.total = total;
+		this.datacompra = datacompra;
+	}
+	
+	public Compra() {
+		
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID;
+	private Long id;
+	
+	private Long IDevento;
 
-	private String evento = eveeen.getNome();
+	private String evento;
 	
 	private int qtd;
 	
@@ -23,13 +39,21 @@ public class Compra {
 	
 	private Date datacompra;
 
-	public Long getID() {
-		return ID;
+	
+	
+	public Long getId() {
+		return id;
 	}
-	public void setID(Long iD) {
-		ID = iD;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
+	public Long getIDevento() {
+		return IDevento;
+	}
+	public void setIDevento(Long iDevento) {
+		IDevento = iDevento;
+	}
+	
 	public String getEvento() {
 		return evento;
 	}
@@ -61,5 +85,29 @@ public class Compra {
 	public void setDatacompra(Date datacompra) {
 		this.datacompra = datacompra;
 	}
-
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compra other = (Compra) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
 }

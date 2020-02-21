@@ -1,10 +1,8 @@
 package com.gft.casadeeventos.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -53,14 +51,16 @@ public class controllereventos {
 			return mv;
 		}
 		
-		if(evento.getPreco() == null || (evento.getPreco().compareTo(BigDecimal.ZERO) == 0) )
+		if( evento.getPreco() == 0) 
 		{
 			System.out.println(evento.getPreco());
 			evento.setGrat(false);			
 		}
+		evento.setIngressosd(evento.getIngressos());
 		
 		
 			event.save(evento);
+						
 			List <Evento> todosEventos = event.findAll();
 			mv.addObject(new Evento());
 			mv.addObject("eventos", todosEventos);

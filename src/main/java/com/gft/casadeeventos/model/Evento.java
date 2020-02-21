@@ -1,6 +1,5 @@
 package com.gft.casadeeventos.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -41,7 +40,7 @@ public class Evento {
 	@JoinColumn
 	private Casa local;
 	
-	private BigDecimal preco;
+	private double preco = 0;
 
 	@NotNull(message="insira o limite de ingressos")
 	private Integer ingressos;
@@ -111,15 +110,17 @@ public class Evento {
 		this.local = local;
 	}
 
-	public BigDecimal getPreco() {
+	
+
+	
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
-	
 	public Integer getIngressos() {
 		return ingressos;
 	}
