@@ -48,16 +48,6 @@ layout:decorator="Layout">
 									<td class="text-center" th:if="${compr.total > 0}"  th:text="|R$: ${compr.total}|"></td>
 									<td class="text-center" th:unless="${compr.total > 0}">Evento gratuito</td>								
 								<td class="text-center" th:text="${#dates.format(compr.datacompra, 'dd-MMM-yyyy')}"></td>
-								<td class="text-center">
-									<a class="btn-link btn-xs" th:href="@{/comprdeshow/editar/{id}(id=${compr.id})}">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-								<td class="text-center">
-									<a class="btn btn-link btn-xs" th:href="@{/comprdeshow/{id}(id=${compr.id})}">
-							  			<i class="fas fa-trash-alt"></i>
-									</a>
-								</td>	
 							</tr>
 							<tr>
 								<td th:if="${#lists.isEmpty(compras)}"colspan="7">Nenhuma compra encontrada</td>
