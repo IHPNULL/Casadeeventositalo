@@ -17,51 +17,51 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@SequenceGenerator(name="evento_seq",sequenceName="")
+@SequenceGenerator(name = "evento_seq", sequenceName = "")
 public class Evento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	
-	@NotNull(message="Insira o nome do Evento")
-	@NotEmpty(message="Insira o nome do Evento")
+
+	@NotNull(message = "Insira o nome do Evento")
+	@NotEmpty(message = "Insira o nome do Evento")
 	private String Nomeevento;
-	
+
 	private String descr;
 
 	private String talento;
-	
-	@NotNull(message="Insira o organizador do Evento")
-	@NotEmpty(message="Insira o organizador do Evento")
+
+	@NotNull(message = "Insira o organizador do Evento")
+	@NotEmpty(message = "Insira o organizador do Evento")
 	private String organizador;
-	
+
 	@ManyToOne
 	@JoinColumn
 	private Casa local;
-	
+
 	private double preco = 0;
 
-	@NotNull(message="insira o limite de ingressos")
+	@NotNull(message = "insira o limite de ingressos")
 	private Integer ingressos;
-	
+
 	private int ingressosd;
-	
-	@NotNull(message="Insira a data no formato: dia/mes/ano")
+
+	@NotNull(message = "Insira a data no formato: dia/mes/ano")
 	@DateTimeFormat(pattern = "dd/MM/yyy")
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	
+
 	private boolean grat = true;
-	
+
 	public String getNomeevento() {
 		return Nomeevento;
 	}
-	
+
 	public void setNomeevento(String nomeevento) {
 		Nomeevento = nomeevento;
 	}
-	
+
 	public Long getId() {
 		return Id;
 	}
@@ -110,9 +110,6 @@ public class Evento {
 		this.local = local;
 	}
 
-	
-
-	
 	public double getPreco() {
 		return preco;
 	}
@@ -152,7 +149,6 @@ public class Evento {
 	public void setGrat(boolean grat) {
 		this.grat = grat;
 	}
-	
 
 	@Override
 	public int hashCode() {

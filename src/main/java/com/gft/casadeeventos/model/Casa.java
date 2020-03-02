@@ -16,59 +16,68 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @SuppressWarnings("deprecation")
 public class Casa {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotEmpty(message="Insira o nome do Local")
+
+	@NotEmpty(message = "Insira o nome do Local")
 	@NotNull
 	private String nome;
-	
+
 	private String descr;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="local")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "local")
 	private List<Evento> events;
-	
-	@NotEmpty(message="Insira o Endereço do Local")
+
+	@NotEmpty(message = "Insira o Endereço do Local")
 	@NotNull
 	private String end;
-	
+
 	private String dono;
-	
-	@NotNull(message="insira o valor da noite")
-	private BigDecimal preco;	
-	
-	@NotNull(message="insira o limite de ingressos")
+
+	@NotNull(message = "insira o valor da noite")
+	private BigDecimal preco;
+
+	@NotNull(message = "insira o limite de ingressos")
 	private Integer capa;
-	
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDescr() {
 		return descr;
 	}
+
 	public void setDescr(String descr) {
 		this.descr = descr;
 	}
+
 	public String getEnd() {
 		return end;
 	}
+
 	public void setEnd(String end) {
 		this.end = end;
 	}
+
 	public Integer getCapa() {
 		return capa;
 	}
+
 	public void setCapa(Integer capa) {
 		this.capa = capa;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -76,15 +85,19 @@ public class Casa {
 	public String getDono() {
 		return dono;
 	}
+
 	public void setDono(String dono) {
 		this.dono = dono;
 	}
+
 	public BigDecimal getPreco() {
 		return preco;
 	}
+
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -92,6 +105,7 @@ public class Casa {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
